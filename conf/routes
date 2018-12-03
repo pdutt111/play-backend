@@ -1,0 +1,19 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+#User Calls
+GET    /users/:email                  controllers.UserController.getUser(email: String)
+POST    /users/edit/:email                  controllers.UserController.update(email: String)
+POST    /users                      controllers.UserController.save()
+POST     /users/reset/:email               controllers.UserController.resetPassword(email: String)
+POST     /users/:email/submission/approve/:id              controllers.SubmissionsController.approve(id: Long,email: String)
+POST     /users/:email/submission/new               controllers.SubmissionsController.save(email: String)
+GET     /users/:email/submission/all               controllers.SubmissionsController.fetchSubmissions(email: String)
+POST     /users/:email/submission/:id              controllers.SubmissionsController.update(id: Long,email :String)
+GET     /users/:email/submission/:id              controllers.SubmissionsController.fetchSubmission(id: Long,email: String)
+
+
