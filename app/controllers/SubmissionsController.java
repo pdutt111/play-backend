@@ -104,4 +104,17 @@ public class SubmissionsController extends Controller {
             return badRequest("blah blah");
         }
     }
+    public Result reject(Long submissionId,String email) throws PersistenceException {
+        User user = User.find.where().eq("email", email).findUnique();
+        if (user.authority.equals("admin")) {
+            Transaction txn = Ebean.beginTransaction();
+            Submission submission = Submission.find.byId(submissionId);
+            submission.status = "-1";
+            submission.update();
+            txn.commit();
+            return ok("blah blah");
+        }else{
+            return badRequest("blah blah");
+        }
+    }
 }

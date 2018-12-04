@@ -11,6 +11,7 @@ POST    /users/edit/:email                  controllers.UserController.update(em
 POST    /users                      controllers.UserController.save()
 POST     /users/reset/:email               controllers.UserController.resetPassword(email: String)
 POST     /users/:email/submission/approve/:id              controllers.SubmissionsController.approve(id: Long,email: String)
+POST     /users/:email/submission/reject/:id              controllers.SubmissionsController.reject(id: Long,email: String)
 POST     /users/:email/submission/new               controllers.SubmissionsController.save(email: String)
 GET     /users/:email/submission/all               controllers.SubmissionsController.fetchSubmissions(email: String)
 POST     /users/:email/submission/:id              controllers.SubmissionsController.update(id: Long,email :String)
